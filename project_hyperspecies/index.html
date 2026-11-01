@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
   <title>Hyper Species &mdash; Wolfgang Laimer</title>
   <meta name="description" content="Exploring futures of becoming, beyond human. A framework on how bodies and environments exchange and adapt, through biology, craft, and technology.">
   <link rel="stylesheet" href="../css/base.css">
@@ -48,13 +49,13 @@
     <section class="stills" aria-label="Stills, hover to play the video">
       <figure class="still" data-video="../assets/laimer_hyperspecies_video01.mp4">
         <img src="../assets/laimer_hyperspecies_still01.jpg" alt="Hyper Species: still 01" width="3127" height="4117" loading="lazy">
-        <video muted loop playsinline preload="auto" hidden aria-label="Hyper Species: video 01">
+        <video muted loop playsinline preload="auto" disablepictureinpicture controlslist="nodownload" hidden aria-label="Hyper Species: video 01">
           <source src="../assets/laimer_hyperspecies_video01.mp4" type="video/mp4">
         </video>
       </figure>
       <figure class="still" data-video="../assets/laimer_hyperspecies_video02.mp4">
         <img src="../assets/laimer_hyperspecies_still02.jpg" alt="Hyper Species: still 02" width="1232" height="1625" loading="lazy">
-        <video muted loop playsinline preload="auto" hidden aria-label="Hyper Species: video 02">
+        <video muted loop playsinline preload="auto" disablepictureinpicture controlslist="nodownload" hidden aria-label="Hyper Species: video 02">
           <source src="../assets/laimer_hyperspecies_video02.mp4" type="video/mp4">
         </video>
       </figure>
@@ -84,15 +85,22 @@
     <span class="mail-plain">laimer.w@gmail.com</span>
     <a href="https://www.linkedin.com/in/wolfgang-laimer/">LinkedIn<span class="lnk-ar"> &nearr;</span></a>
     <a href="https://www.instagram.com/wolfganglaimer/">Instagram<span class="lnk-ar"> &nearr;</span></a>
-    <span class="small">&copy; 2026 Wolfgang Laimer &middot; <a href="../legal/index.html">Legal</a></span>
+    <span class="small">&copy; 2026 Wolfgang Laimer &middot; <a href="../legal/index.html">Legal</a> &middot; Design study &middot; Draft copy &middot; Not published</span>
   </footer>
 
   <script>
     document.querySelectorAll('.stills .still[data-video]').forEach(function (f) {
       var img = f.querySelector('img');
       var v = f.querySelector('video');
-      f.addEventListener('pointerenter', function () { img.hidden = true; v.hidden = false; v.play(); });
-      f.addEventListener('pointerleave', function () { v.pause(); v.currentTime = 0; v.hidden = true; img.hidden = false; });
+      function start() { img.hidden = true; v.hidden = false; v.play(); }
+      function stop() { v.pause(); v.currentTime = 0; v.hidden = true; img.hidden = false; }
+      if (window.matchMedia('(hover: hover)').matches) {
+        f.addEventListener('pointerenter', start);
+        f.addEventListener('pointerleave', stop);
+      } else {
+        f.addEventListener('click', function () { if (v.hidden) { start(); } else { stop(); } });
+      }
+      f.addEventListener('contextmenu', function (e) { e.preventDefault(); });
     });
   </script>
   <script src="../js/lightbox.js"></script>

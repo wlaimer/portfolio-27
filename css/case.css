@@ -167,3 +167,17 @@ a:hover .lnk-ar, a:focus-visible .lnk-ar { visibility: visible; transition: visi
 .case.split-center .gal.duo figure { flex: 0 0 min(59.3svh, calc((100% - 56px) / 2)); margin: 0; }
 .case.split-center .gal.duo img { aspect-ratio: 2000 / 2633; }
 @media (max-width: 860px) { .case.split-center .gal.duo { display: grid; grid-template-columns: 1fr; padding-left: 0; gap: 16px; } .case.split-center .gal.duo figure { flex: none; } }
+
+@media (max-width: 860px) {
+  .case .row, .case .galtext { grid-template-columns: 1fr; column-gap: 0; }
+  .case .row > *, .case .galtext > * { grid-column: 1 / -1; }
+  .case .plate figcaption, .case .plate .img { grid-row: auto; }
+  .case .galhero { margin-left: 0; }
+  .case .galhero img { width: 100%; }
+  .case-foot { padding-left: var(--g); padding-right: var(--g); }
+}
+
+.case .stills .still { -webkit-touch-callout: none; -webkit-user-select: none; user-select: none; }
+.case .stills img, .case .stills video { -webkit-touch-callout: none; -webkit-user-drag: none; }
+
+.case .stills .still img, .case .stills .still video { pointer-events: none; }

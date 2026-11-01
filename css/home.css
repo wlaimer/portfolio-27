@@ -73,8 +73,8 @@ body[data-mode="index"] #index { display: block; position: fixed; inset: 0; z-in
 
 @media (max-width: 760px) {
   .js #col { width: auto; right: var(--g); bottom: 3svh; }
-  :root { --ih: min(38svh, calc(100svh - 430px)); --ch: 230px; }
-  .js .fig { top: calc(50% - 60px); }
+  :root { --ih: min(48svh, calc(100svh - 370px)); --ch: 230px; }
+  .js .fig { top: calc(50% - 68px); }
   .rows { max-width: none; } #peek { display: none; }
 }
 @media (prefers-reduced-motion: reduce) { .js.ready #intro, .js.ready .fig, .js.ready #texts, .js.ready .dw { transition: none; } }
@@ -191,3 +191,11 @@ a:hover .lnk-ar, a:focus-visible .lnk-ar { visibility: visible; transition: visi
 .rows.more .y { font-size: 11px; }
 
 .small a:hover, .small a:focus-visible { text-decoration: none; }
+
+.contact .mail { flex: 0 0 100%; margin-right: 0; }
+
+html, body { overscroll-behavior-y: none; }
+.js #info { overscroll-behavior: contain; }
+
+.js #col { pointer-events: none; }
+.js #col .t[data-s="now"] a, .js #col .t[data-s="past"] .h a { pointer-events: auto; }

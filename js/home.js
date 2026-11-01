@@ -90,6 +90,10 @@
     go(i + (dy < 0 ? 1 : -1));
   }, { passive: true });
 
+  addEventListener('touchmove', e => {
+    if (!inSequence() || i !== last || !e.cancelable) return;
+    if (info.scrollTop <= 0 && e.touches[0].clientY > sy) e.preventDefault();
+  }, { passive: false });
   const target = h => (h === 'p0' ? 0 : h === 'info' ? last : /^p[1-6]$/.test(h) ? +h.slice(1) : -1);
 
   let px = -1, py = -1, hoverKey = '', since = 0, armed = false;
